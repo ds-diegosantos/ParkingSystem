@@ -1,5 +1,4 @@
 ﻿using ParkingSystem.Domain.Validation;
-using System.Data;
 
 namespace ParkingSystem.Domain.Entities;
 
@@ -26,8 +25,8 @@ public class Category : Entity
     private void ValidateName(string name)
     {
         int MaxNameLength = 255;
-        DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Category name is required.");
-        DomainExceptionValidation.When(name.Length > MaxNameLength, $"Category name cannot exceed {MaxNameLength} characters.");
+        DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Name is required.");
+        DomainExceptionValidation.When(name.Length > MaxNameLength, $"Name cannot exceed {MaxNameLength} characters.");
 
         Name = name;
     }

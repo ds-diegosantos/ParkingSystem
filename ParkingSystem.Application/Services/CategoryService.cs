@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using MediatR;
 using ParkingSystem.Application.Commands.Categories;
 using ParkingSystem.Application.DTOs.Category.Requests;

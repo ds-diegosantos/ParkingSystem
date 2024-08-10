@@ -17,6 +17,7 @@ public class CategoryCreateCommandHandler : IRequestHandler<CategoryCreateComman
         _categoryRepository = categoryRepository;
     }
 
+
     public async Task<Category> Handle(CategoryCreateCommand request, CancellationToken cancellationToken)
     {
         var priceTable = await _mediator.Send(request.PriceTable, cancellationToken);

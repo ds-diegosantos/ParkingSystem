@@ -22,7 +22,23 @@ public class CategoryRepository : ICategoryRepository
         return category;
     }
 
-    public async Task<PagedResult<Category>> GetCategories(int pageSize, int currentPage)
+    public async Task<Category> DeleteAsync(Category category)
+    {
+        _context.Remove(category);
+        await _context.SaveChangesAsync();
+        return category;
+    }
+
+    public async Task<Category> GetByIdAsync(int id)
+    {
+        return await _context.Categories
+            .AsNoTracking()
+            .Include(p => p.PriceTable)
+            .Include(p => p.Spots)
+            .FirstOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task<PagedResult<Category>> GetCategoriesAsync(int pageSize, int currentPage)
     {
         var categoriesQuery = _context.Categories.OrderBy(c => c.Id);
         var totalCount = await categoriesQuery.CountAsync();
@@ -41,5 +57,12 @@ public class CategoryRepository : ICategoryRepository
             PageSize = pageSize,
             TotalCount = totalCount
         };
+    }
+
+    public async Task<Category> UpdateAsync(Category category)
+    {
+        _context.Categories.Update(category);
+        await _context.SaveChangesAsync();
+        return category;
     }
 }

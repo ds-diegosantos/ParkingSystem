@@ -11,8 +11,11 @@ public class DTOToCommandMappingProfile : Profile
 {
     public DTOToCommandMappingProfile()
     {
-        CreateMap<CreateCategoryDTO, CategoryCreateCommand>().ReverseMap();
+        CreateMap<RequestCategoryDTO, CategoryCreateCommand>().ReverseMap();
+        CreateMap<RequestCategoryDTO, CategoryUpdateCommand>().ReverseMap();
         CreateMap<PriceTableDTO, PriceTableCreateCommand>().ReverseMap();
+        CreateMap<PriceTableDTO, PriceTableUpdateCommand>().ReverseMap();
         CreateMap<CategoryParameters, GetCategoriesQuery>().ReverseMap();
+
     }
 }

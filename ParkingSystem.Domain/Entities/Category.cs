@@ -16,11 +16,29 @@ public class Category : Entity
         PriceTableId = priceTableId;
     }
 
-    public void Update(int id, string name, int priceTableId)
+    public void Update(int id, string name)
     {
         ValidateId(id);
         ValidateName(name);
-        PriceTableId = priceTableId;
+    }
+
+    public bool HasOccupiedSpot()
+    {
+        return Spots.Any(spot => spot.IsOccupied);
+    }
+
+    public int GetAvailableSpots()
+    {
+        return Spots.Count - Spots.Count(spot => spot.IsOccupied);
+    }
+
+    public void ReorderSpots()
+    {
+        var sortedSpots = Spots.OrderBy(spot => spot.Number).ToList();
+        for (int i = 0; i < sortedSpots.Count; i++)
+        {
+            sortedSpots[i].UpdateNumber(i + 1);
+        }
     }
 
     private void ValidateName(string name)

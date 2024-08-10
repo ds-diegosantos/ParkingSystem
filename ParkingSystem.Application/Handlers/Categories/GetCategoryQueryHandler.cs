@@ -17,6 +17,6 @@ public class GetCategoryQueryHandler : IRequestHandler<GetCategoriesQuery, Paged
 
     public async Task<PagedResult<Category>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
     {
-        return await _categoryRepository.GetCategories(request.PageSize, request.CurrentPage);
+        return await _categoryRepository.GetCategoriesAsync(request.PageSize, request.CurrentPage);
     }
 }

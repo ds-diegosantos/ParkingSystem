@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using ParkingSystem.Application.Commands.Categories;
 using ParkingSystem.Application.DTOs.Category.Requests;
@@ -20,17 +19,40 @@ public class CategoryService : ICategoryService
         _mediator = mediator;
     }
 
-    public async Task<CategoryDTO> CreateAsync(CreateCategoryDTO categoryDto)
+    public async Task<ResponseCategoryDTO> CreateAsync(RequestCategoryDTO categoryDto)
     {
         var categoryCreateCommand = _mapper.Map<CategoryCreateCommand>(categoryDto);
         var category = await _mediator.Send(categoryCreateCommand);
-        return _mapper.Map<CategoryDTO>(category);
+        return _mapper.Map<ResponseCategoryDTO>(category);
     }
 
-    public async Task<PagedResult<CategoryDTO>> get(CategoryParameters parameters)
+    public async Task<ResponseCategoryDTO> DeleteAsync(int id)
+    {
+        var categoryDeleteCommand = new CategoryDeleteCommand() { Id = id };
+        var category = await _mediator.Send(categoryDeleteCommand);
+        return _mapper.Map<ResponseCategoryDTO>(category);
+    }
+
+    public async Task<PagedResult<ResponseCategoryDTO>> getAsync(CategoryParameters parameters)
     {
         var getCategoriesQuery = _mapper.Map<GetCategoriesQuery>(parameters);
         var categories = await _mediator.Send(getCategoriesQuery);
-        return _mapper.Map<PagedResult<CategoryDTO>>(categories);
+        return _mapper.Map<PagedResult<ResponseCategoryDTO>>(categories);
+    }
+
+    public async Task<ResponseCategoryDTO> getByIdAsync(int id)
+    {
+        var getCategoryByIdQuery = new GetCategoryByIdQuery() { Id = id };
+        var category = await _mediator.Send(getCategoryByIdQuery);
+        return _mapper.Map<ResponseCategoryDTO>(category);
+    }
+
+    public async Task<ResponseCategoryDTO> UpdateAsync(int id, RequestCategoryDTO categoryDto)
+    {
+        var categoryUpdateCommand = _mapper.Map<CategoryUpdateCommand>(categoryDto);
+        categoryUpdateCommand.Id = id;
+        var category = await _mediator.Send(categoryUpdateCommand);
+        return _mapper.Map<ResponseCategoryDTO>(category);
+
     }
 }

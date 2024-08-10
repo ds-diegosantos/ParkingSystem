@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ParkingSystem.Application.Commands.Categories;
+using ParkingSystem.Application.DTOs.Category.Requests;
 using ParkingSystem.Application.DTOs.Category.response;
 using ParkingSystem.Application.DTOs.PriceTable;
 using ParkingSystem.Application.DTOs.Spot;
@@ -11,9 +13,9 @@ public class DomainToDTOMappingProfile : Profile
 {
     public DomainToDTOMappingProfile()
     {
-        CreateMap<Category, CategoryDTO>().ReverseMap();
+        CreateMap<Category, ResponseCategoryDTO>().ReverseMap();
         CreateMap<PriceTable, PriceTableDTO>().ReverseMap();
         CreateMap<Spot, SportDTO>().ReverseMap();
-        CreateMap<PagedResult<Category>, PagedResult<CategoryDTO>>().ReverseMap();
+        CreateMap<PagedResult<Category>, PagedResult<ResponseCategoryDTO>>().ReverseMap();
     }
 }

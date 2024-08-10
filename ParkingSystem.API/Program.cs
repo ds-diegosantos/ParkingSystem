@@ -13,7 +13,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    //daqui
     var provider = builder.Services.BuildServiceProvider()
         .GetRequiredService<IApiVersionDescriptionProvider>();
 

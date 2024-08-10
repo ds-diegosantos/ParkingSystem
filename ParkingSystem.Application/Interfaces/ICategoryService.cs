@@ -7,6 +7,10 @@ namespace ParkingSystem.Application.Interfaces;
 
 public interface ICategoryService
 {
-    Task<CategoryDTO> CreateAsync(CreateCategoryDTO categoryDto);
-    Task<PagedResult<CategoryDTO>> get(CategoryParameters parameters);
+    Task<ResponseCategoryDTO> CreateAsync(RequestCategoryDTO categoryDto);
+    Task<PagedResult<ResponseCategoryDTO>> getAsync(CategoryParameters parameters);
+    Task<ResponseCategoryDTO> getByIdAsync(int id);
+    Task<ResponseCategoryDTO> DeleteAsync(int id);
+    Task<ResponseCategoryDTO> UpdateAsync(int id, RequestCategoryDTO categoryDto);
+
 }

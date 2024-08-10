@@ -6,5 +6,9 @@ namespace ParkingSystem.Domain.Interfaces;
 public interface ICategoryRepository
 {
     Task<Category> CreateAsync(Category category);
-    public Task<PagedResult<Category>> GetCategories(int pageSize, int currentPage);
+    Task<PagedResult<Category>> GetCategoriesAsync(int pageSize, int currentPage);
+    Task<Category> GetByIdAsync(int id);
+    Task<Category> DeleteAsync(Category category);
+    Task<Category> UpdateAsync(Category category);
+
 }

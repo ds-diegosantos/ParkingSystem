@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ParkingSystem.Application.DTOs.Category.Requests;
-public class CreateCategoryDTO
+public class RequestCategoryDTO
 {
     [Required(ErrorMessage = "The category name is required.")]
     [StringLength(255, ErrorMessage = "The category name cannot exceed 255 characters.")]

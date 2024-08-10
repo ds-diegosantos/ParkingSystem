@@ -16,6 +16,11 @@ namespace ParkingSystem.Domain.Entities
             CategoryId = categoryId;
         }
 
+        public void UpdateNumber(int number)
+        {
+            Update(Id, number, IsOccupied, CategoryId);
+        }
+
         public void Update(int id, int number, bool isOccupied, int categoryId)
         {
             ValidateId(id);

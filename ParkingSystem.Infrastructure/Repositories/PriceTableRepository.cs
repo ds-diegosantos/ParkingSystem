@@ -1,4 +1,5 @@
-﻿using ParkingSystem.Domain.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using ParkingSystem.Domain.Interfaces;
 using ParkingSystem.Infrastructure.Context;
 namespace ParkingSystem.Infrastructure.Repositories;
 
@@ -18,4 +19,15 @@ public class PriceTableRepository : IPriceTableRepository
         return priceTable;
     }
 
+    public async Task<PriceTable> getByIdAsync(int id)
+    {
+        return await _context.PriceTables.FirstOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task<PriceTable> UpdateAsync(PriceTable priceTable)
+    {
+        _context.PriceTables.Update(priceTable);
+        await _context.SaveChangesAsync();
+        return priceTable;
+    }
 }

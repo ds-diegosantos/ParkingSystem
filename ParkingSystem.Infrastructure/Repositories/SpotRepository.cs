@@ -19,4 +19,11 @@ public class SpotRepository : ISpotRepository
         await _context.SaveChangesAsync();
         return spot;
     }
+
+    public async Task<Spot> DeleteAsync(Spot spot)
+    {
+        _context.Remove(spot);
+        await _context.SaveChangesAsync();
+        return spot;
+    }
 }

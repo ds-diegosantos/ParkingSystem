@@ -1,14 +1,9 @@
-﻿using MediatR;
-using ParkingSystem.Application.Commands.PriceTables;
-using ParkingSystem.Domain.Entities;
+﻿using ParkingSystem.Application.Commands.PriceTables;
 
 namespace ParkingSystem.Application.Commands.Categories;
 
-public class CategoryCreateCommand : IRequest<Category>
+public class CategoryCreateCommand : CategoryCommand
 {
-    public string Name { get; set; }
     public PriceTableCreateCommand PriceTable { get; set; }
-    public int SpotCount { get; set; }
-
 }
 

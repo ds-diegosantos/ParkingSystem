@@ -12,6 +12,12 @@ public class PriceTable : Entity
         ValidateDomain(payPerUse,subscription);
     }
 
+    public void Update(decimal payPerUse, decimal subscription)
+    {
+        ValidateId(Id);
+        ValidateDomain(payPerUse, subscription);
+    }
+
     public void Update(int id, decimal payPerUse, decimal subscription)
     {
         ValidateId(id);

@@ -9,15 +9,16 @@ public class Category : Entity
     public PriceTable PriceTable { get; set; }
     public int PriceTableId { get; set; }
 
-    public Category(string name)
+    public Category(string name, int priceTableId)
     {
         ValidateName(name);
         Spots = new List<Spot>();
+        PriceTableId = priceTableId;
     }
 
-    public void Update(int ind, string name, int priceTableId)
+    public void Update(int id, string name, int priceTableId)
     {
-        ValidateId(ind);
+        ValidateId(id);
         ValidateName(name);
         PriceTableId = priceTableId;
     }

@@ -5,6 +5,7 @@ public class PriceTable : Entity
 {
     public decimal PayPerUse { get; private set; }
     public decimal Subscription { get; private set; }
+    public Category Category { get; set; }
 
     public PriceTable(decimal payPerUse, decimal subscription)
     {

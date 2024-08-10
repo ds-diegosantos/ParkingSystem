@@ -7,13 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ParkingSystem.Application\ParkingSystem.Application.csproj" />
-    <ProjectReference Include="..\ParkingSystem.Domain\ParkingSystem.Domain.csproj" />
-    <ProjectReference Include="..\ParkingSystem.Infrastructure\ParkingSystem.Infrastructure.csproj" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Ioc\" />
+    <ProjectReference Include="..\ParkingSystem.Application\ParkingSystem.Application.csproj" />
+    <ProjectReference Include="..\ParkingSystem.Domain\ParkingSystem.Domain.csproj" />
+    <ProjectReference Include="..\ParkingSystem.Infrastructure\ParkingSystem.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
